@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace AutoRequestProject.Models
@@ -16,7 +17,8 @@ namespace AutoRequestProject.Models
         private bool is_active {
             get
             {
-                return (new DateTime() - lastRequestMade).Milliseconds < requestInterval; 
+                double t = (DateTime.Now - lastRequestMade).Ticks;
+                return (DateTime.Now - lastRequestMade).Ticks < requestInterval; 
             }
         }
 
@@ -39,15 +41,29 @@ namespace AutoRequestProject.Models
             if (is_active || in_work)
                 return;
 
-            lastRequestMade = new DateTime();
+            lastRequestMade = DateTime.Now;
             await MakeRequest(); 
         }
 
         private async Task MakeRequest()
         {
             in_work = true;
-
+            string htmlCode = ""; 
             // do the work
+            using (WebClient client = new WebClient())
+            {
+
+                try
+                {
+                    htmlCode = client.DownloadString(requestUrl);
+                }
+                catch(Exception e)
+                {
+                    var test = 1; 
+                }
+
+                var test2 = 1; 
+            }
 
             in_work = false;
         }

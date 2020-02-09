@@ -15,8 +15,8 @@ namespace AutoRequestProject
     {
         public static void Main(string[] args)
         {
-            //CreateWebHostBuilder(args).Build().Run();
-            AutoRequestService.GetService().StartService(); 
+            AutoRequestService.GetService().StartService();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

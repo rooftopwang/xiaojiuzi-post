@@ -44,6 +44,7 @@ namespace AutoRequestProject.Service
 
         public void StartService()
         {
+            Test(); 
             in_active_mode = true;
 
             while (in_active_mode)
@@ -55,6 +56,9 @@ namespace AutoRequestProject.Service
             }
         }
 
-
+        public void Test()
+        {
+            AddNew(new RequestUnit("https://yiju.ca/page/49788/2020%e5%b9%b4%e5%8a%a0%e6%8b%bf%e5%a4%a7%e7%9c%81%e6%8f%90%e5%90%8d%e7%a7%bb%e6%b0%91%e5%a2%9e%e5%8a%a011-percent.aspx?sid=188888", 1000)); 
+        }
     }
 }
